@@ -132,11 +132,10 @@ describe VendingMachine do
 
       it "在庫が減って売上が増える" do
         subject.buy
-     
+
         subject.juices.should == Array.new(4, @cola)
         subject.sales.should == 120
       end
- 
     end
 
     context "お金が足りない場合" do
@@ -147,11 +146,10 @@ describe VendingMachine do
 
       it "在庫が減らず売上も増えない" do
         subject.buy
-     
+
         subject.juices.should == Array.new(5, @cola)
         subject.sales.should == 0
       end
- 
     end
  end
 end
