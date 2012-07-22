@@ -5,6 +5,10 @@ require './juice'
 describe VendingMachine do
   subject { VendingMachine.new }
 
+  before do
+    @cola = Juice.new("コーラ", 120)
+  end
+
   describe '#add' do
     context 'お金1枚入れた時' do
       where(:money) do
@@ -97,10 +101,6 @@ describe VendingMachine do
   end
 
   describe "#initialize" do
-    before do
-      @cola = Juice.new("コーラ", 120)
-    end
-
     it "120円のコーラが5本入っている" do
       subject.juices.should == Array.new(5, @cola)
     end
@@ -128,7 +128,6 @@ describe VendingMachine do
         subject.add(:yen100)
         subject.add(:yen10)
         subject.add(:yen10)
-        @cola = Juice.new("コーラ", 120)
       end
 
       it "在庫が減って売上が増える" do
@@ -144,7 +143,6 @@ describe VendingMachine do
       before do
         subject.add(:yen100)
         subject.add(:yen10)
-        @cola = Juice.new("コーラ", 120)
       end
 
       it "在庫が減らず売上も増えない" do
