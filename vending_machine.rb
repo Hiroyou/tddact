@@ -2,13 +2,13 @@
 require 'pry'
 
 class VendingMachine
-  attr_accessor :moneys, :jueces
+  attr_accessor :moneys, :juices
 
   def initialize
     @moneys = {:yen10 => 0, :yen50 => 0, :yen100 => 0, :yen500 => 0, :yen1000 => 0}
 
     cola = Juice.new("コーラ", 120)
-    @jueces = Array.new(5, cola)
+    @juices = Array.new(5, cola)
   end
 
   def add(yen)
