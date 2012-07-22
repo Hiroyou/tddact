@@ -101,11 +101,11 @@ describe VendingMachine do
       end
     end
 
-    #context 'コーラを購入したあと' do
-      #it '釣り銭を出力する' do
-        #subject.refund.should == [:yen10, :yen10, :yen10, :yen100]
-      #end
-    #end
+    context 'コーラを購入したあと' do
+      it '釣り銭を出力する' do
+        subject.refund.should == 130
+      end
+    end
   end
 
   describe "#initialize" do
