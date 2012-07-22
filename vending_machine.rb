@@ -34,6 +34,13 @@ class VendingMachine
     result
   end
 
+  def can_buy?
+    @juices.each do |juice|
+      return true if juice.price <= calc_total
+    end
+    return false
+  end
+
   private
   def get_price(symbol)
     l = symbol.length

@@ -105,5 +105,20 @@ describe VendingMachine do
       subject.juices.should == Array.new(5, @cola)
     end
   end
-end
 
+  describe 'buyable' do
+    context '投入金額と在庫から購入可能か判定できる' do
+      it '100円投入して、コーラが買えない' do
+        subject.add(:yen100)
+        subject.should_not be_can_buy
+      end
+
+      it '120円投入して、コーラが買える' do
+        subject.add(:yen100)
+        subject.add(:yen10)
+        subject.add(:yen10)
+        subject.should be_can_buy
+      end
+    end
+  end
+end
