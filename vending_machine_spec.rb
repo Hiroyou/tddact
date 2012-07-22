@@ -28,5 +28,12 @@ describe VendingMachine do
       subject.add(:yen1000)
       subject.moneys.should include(:yen1000)
     end
+
+		it 'add yen10 and yen100' do
+      subject.add(:yen10)
+      subject.add(:yen100)
+      subject.moneys.should include(:yen10)
+      subject.moneys.should include(:yen100)
+		end
   end
 end
