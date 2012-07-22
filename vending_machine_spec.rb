@@ -32,14 +32,14 @@ describe VendingMachine do
     it 'add yen10 and yen100' do
       subject.add(:yen10)
       subject.add(:yen100)
-      subject.moneys.count(:yen10).should == 1
-      subject.moneys.count(:yen100).should == 1
+      subject.moneys[:yen10].should == 1
+      subject.moneys[:yen100].should == 1
     end
 
     it 'add yen10 and yen10' do
       subject.add(:yen10)
       subject.add(:yen10)
-      subject.moneys.count(:yen10).should == 2
+      subject.moneys[:yen10].should == 2
     end
   end
 end
