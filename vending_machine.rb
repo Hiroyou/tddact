@@ -8,7 +8,7 @@ class VendingMachine
     @moneys = {:yen10 => 0, :yen50 => 0, :yen100 => 0, :yen500 => 0, :yen1000 => 0}
 
     cola = Juice.new("コーラ", 120)
-    @jueces = [cola, cola, cola, cola, cola]
+    @jueces = Array.new(5, cola)
   end
 
   def add(yen)

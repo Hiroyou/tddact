@@ -102,7 +102,8 @@ describe VendingMachine do
     end
 
     it "120円のコーラが5本入っている" do
-      subject.jueces.should == [@cola, @cola, @cola, @cola, @cola]
+      subject.jueces.should == Array.new(5, @cola)
     end
   end
 end
+
