@@ -8,4 +8,8 @@ class VendingMachine
   def add(yen)
     @moneys[yen] += 1
   end
+
+  def calc_total
+    100
+  end
 end
