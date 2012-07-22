@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 require './vending_machine'
+require './juice'
 
 describe VendingMachine do
   subject { VendingMachine.new }
@@ -92,6 +93,16 @@ describe VendingMachine do
 
     it "つり銭を出力する" do
       subject.refund.should == [:yen50, :yen100, :yen100]
+    end
+  end
+
+  describe "#initialize" do
+    before do
+      @cola = Juice.new("コーラ", 120)
+    end
+
+    it "120円のコーラが5本入っている" do
+      subject.jueces.should == [@cola, @cola, @cola, @cola, @cola]
     end
   end
 end
