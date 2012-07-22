@@ -86,7 +86,7 @@ describe VendingMachine do
     end
 
     it "つり銭を出力する" do
-      subject.refund.should == [:yen100, :yen100, :yen50]
+      subject.refund.should == [:yen50, :yen100, :yen100]
     end
   end
 end

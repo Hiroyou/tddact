@@ -17,6 +17,16 @@ class VendingMachine
     end
   end
 
+  def refund
+    result = []
+    @moneys.each { |money, count|
+      count.times do
+        result << money 
+      end
+    }
+    result
+  end
+
   private
   def get_price(symbol)
     l = symbol.length
