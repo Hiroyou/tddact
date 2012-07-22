@@ -106,7 +106,7 @@ describe VendingMachine do
     end
   end
 
-  describe 'buyable' do
+  describe '#can_buy' do
     context '投入金額と在庫から購入可能か判定できる' do
       it '100円投入して、コーラが買えない' do
         subject.add(:yen100)
