@@ -2,13 +2,14 @@
 require 'pry'
 
 class VendingMachine
-  attr_accessor :moneys, :juices
+  attr_accessor :moneys, :juices, :sales
 
   def initialize
     @moneys = {:yen10 => 0, :yen50 => 0, :yen100 => 0, :yen500 => 0, :yen1000 => 0}
 
     cola = Juice.new("コーラ", 120)
     @juices = Array.new(5, cola)
+    @sales = 0
   end
 
   def add(yen)
@@ -39,6 +40,13 @@ class VendingMachine
       return true if juice.price <= calc_total
     end
     return false
+  end
+
+  def buy
+    if can_buy?
+      juice = @juices.shift
+      @sales += juice.price
+    end
   end
 
   private
