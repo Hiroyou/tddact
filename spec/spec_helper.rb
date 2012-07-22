@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'spork'
 require 'rspec'
+require 'rspec-parameterized'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 

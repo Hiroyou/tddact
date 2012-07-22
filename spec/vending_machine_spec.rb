@@ -45,13 +45,27 @@ describe VendingMachine do
   end
 
   describe '#calc_total' do
+
     context 'お金1枚入れた時' do
-      before do
-         subject.add(:yen100)
+      where(:money,:expected) do
+        [
+          [:yen10, 10],
+          [:yen50, 50],
+          [:yen100, 100],
+          [:yen500, 500],
+          [:yen1000, 1000]
+        ]
       end
 
-      it "その金額を返す" do
-        subject.calc_total.should == 100
+      with_them do
+        before do
+          subject.add(money)
+        end
+
+        it "その金額を返す" do
+         subject.calc_total.should == expected
+        end
+
       end
     end
   end
