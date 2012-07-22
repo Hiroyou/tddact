@@ -121,4 +121,20 @@ describe VendingMachine do
       end
     end
   end
+
+  describe "#buy" do
+    before do
+      subject.add(:yen100)
+      subject.add(:yen10)
+      subject.add(:yen10)
+      @cola = Juice.new("コーラ", 120)
+     end
+
+    it "在庫が減って売上が増える" do
+      subject.buy
+   
+      subject.juices.should == Array.new(4, @cola)
+      subject.sales.should == 120
+    end
+  end
 end
