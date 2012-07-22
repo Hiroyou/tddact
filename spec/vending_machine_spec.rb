@@ -123,18 +123,37 @@ describe VendingMachine do
   end
 
   describe "#buy" do
-    before do
-      subject.add(:yen100)
-      subject.add(:yen10)
-      subject.add(:yen10)
-      @cola = Juice.new("コーラ", 120)
-     end
+    context "お金が足りる場合" do
+      before do
+        subject.add(:yen100)
+        subject.add(:yen10)
+        subject.add(:yen10)
+        @cola = Juice.new("コーラ", 120)
+      end
 
-    it "在庫が減って売上が増える" do
-      subject.buy
-   
-      subject.juices.should == Array.new(4, @cola)
-      subject.sales.should == 120
+      it "在庫が減って売上が増える" do
+        subject.buy
+     
+        subject.juices.should == Array.new(4, @cola)
+        subject.sales.should == 120
+      end
+ 
     end
-  end
+
+    context "お金が足りない場合" do
+      before do
+        subject.add(:yen100)
+        subject.add(:yen10)
+        @cola = Juice.new("コーラ", 120)
+      end
+
+      it "在庫が減らず売上も増えない" do
+        subject.buy
+     
+        subject.juices.should == Array.new(5, @cola)
+        subject.sales.should == 0
+      end
+ 
+    end
+ end
 end
