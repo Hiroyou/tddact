@@ -5,42 +5,41 @@ describe VendingMachine do
   subject { VendingMachine.new }
 
   describe '#add' do
-    it 'add yen10' do
-      subject.add(:yen10)
-      subject.moneys[:yen10].should == 1
+    context 'お金1枚入れた時' do
+      where(:money) do
+        [
+          [:yen10],
+          [:yen50],
+          [:yen100],
+          [:yen500],
+          [:yen1000],
+        ]
+      end
+
+      with_them do
+        before do
+          subject.add(money)
+        end
+
+        it do
+          subject.moneys[money].should == 1
+        end
+      end
     end
 
-    it 'add yen50' do
-      subject.add(:yen50)
-      subject.moneys[:yen50].should == 1
-    end
+    context 'お金を複数入れた時' do
+      it 'add yen10 and yen100' do
+        subject.add(:yen10)
+        subject.add(:yen100)
+        subject.moneys[:yen10].should == 1
+        subject.moneys[:yen100].should == 1
+      end
 
-    it 'add yen100' do
-      subject.add(:yen100)
-      subject.moneys[:yen100].should == 1
-    end
-
-    it 'add yen500' do
-      subject.add(:yen500)
-      subject.moneys[:yen500].should == 1
-    end
-
-    it 'add yen1000' do
-      subject.add(:yen1000)
-      subject.moneys[:yen1000].should == 1
-    end
-
-    it 'add yen10 and yen100' do
-      subject.add(:yen10)
-      subject.add(:yen100)
-      subject.moneys[:yen10].should == 1
-      subject.moneys[:yen100].should == 1
-    end
-
-    it 'add yen10 and yen10' do
-      subject.add(:yen10)
-      subject.add(:yen10)
-      subject.moneys[:yen10].should == 2
+      it 'add yen10 and yen10' do
+        subject.add(:yen10)
+        subject.add(:yen10)
+        subject.moneys[:yen10].should == 2
+      end
     end
   end
 
