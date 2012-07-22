@@ -1,9 +1,10 @@
+require 'pry'
+
 class VendingMachine
   attr_accessor :moneys
 
   def initialize
     @moneys = {:yen10 => 0, :yen50 => 0, :yen100 => 0, :yen500 => 0, :yen1000 => 0}
-    @money_to_value = {:yen10 => 10, :yen50 => 50, :yen100 => 100, :yen500 => 500, :yen1000 => 1000}
   end
 
   def add(yen)
@@ -12,7 +13,13 @@ class VendingMachine
 
   def calc_total
     @moneys.inject(0) do |total, money|
-      total += @money_to_value[money[0]] * money[1]
+      total += get_price(money[0]) * money[1]
     end
+  end
+
+  private
+  def get_price(symbol)
+    l = symbol.length
+    symbol.to_s[3..l].to_i
   end
 end
