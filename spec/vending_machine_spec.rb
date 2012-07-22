@@ -41,6 +41,12 @@ describe VendingMachine do
         subject.moneys[:yen10].should == 2
       end
     end
+
+    context '扱えないお金を入れられた時' do
+      it 'yen5を入れられたらyen5が払い戻される' do
+        subject.add(:yen5).should == :yen5
+      end
+    end
   end
 
   describe '#calc_total' do

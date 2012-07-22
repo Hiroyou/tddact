@@ -8,7 +8,10 @@ class VendingMachine
   end
 
   def add(yen)
+    return yen unless @moneys.keys.include?(yen)
+
     @moneys[yen] += 1
+    return nil
   end
 
   def calc_total
