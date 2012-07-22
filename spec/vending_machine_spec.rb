@@ -68,5 +68,13 @@ describe VendingMachine do
 
       end
     end
+
+    context 'お金を複数入れた時' do
+      it '100円と500円を入れた時600円が返る' do
+        subject.add(:yen100)
+        subject.add(:yen500)
+        subject.calc_total.should == 600
+      end
+    end
   end
 end
