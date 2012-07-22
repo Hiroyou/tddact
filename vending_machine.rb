@@ -11,10 +11,8 @@ class VendingMachine
   end
 
   def calc_total
-    total = 0
-    @moneys.each do |money, count| 
-      total += @money_to_value[money] * count
+    @moneys.inject(0) do |total, money|
+      total += @money_to_value[money[0]] * money[1]
     end
-    total
   end
 end
