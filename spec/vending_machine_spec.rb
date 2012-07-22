@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require './vending_machine'
 
 describe VendingMachine do
@@ -40,6 +41,18 @@ describe VendingMachine do
       subject.add(:yen10)
       subject.add(:yen10)
       subject.moneys[:yen10].should == 2
+    end
+  end
+
+  describe '#calc_total' do
+    context 'お金1枚入れた時' do
+      before do
+         subject.add(:yen100)
+      end
+
+      it "その金額を返す" do
+        subject.calc_total.should == 100
+      end
     end
   end
 end
