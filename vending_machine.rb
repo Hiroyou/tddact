@@ -1,10 +1,14 @@
+# -*- encoding: utf-8 -*-
 require 'pry'
 
 class VendingMachine
-  attr_accessor :moneys
+  attr_accessor :moneys, :jueces
 
   def initialize
     @moneys = {:yen10 => 0, :yen50 => 0, :yen100 => 0, :yen500 => 0, :yen1000 => 0}
+
+    cola = Juice.new("コーラ", 120)
+    @jueces = [cola, cola, cola, cola, cola]
   end
 
   def add(yen)
