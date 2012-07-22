@@ -10,6 +10,12 @@ class VendingMachine
   end
 
   def calc_total
-    100
+    total = 0
+    total += @moneys[:yen10] * 10
+    total += @moneys[:yen50] * 50
+    total += @moneys[:yen100] * 100
+    total += @moneys[:yen500] * 500
+    total += @moneys[:yen1000] * 1000
+    total
   end
 end
