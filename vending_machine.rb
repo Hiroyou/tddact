@@ -26,13 +26,7 @@ class VendingMachine
   end
 
   def refund
-    result = []
-    @moneys.each { |money, count|
-      count.times do
-        result << money 
-      end
-    }
-    result
+    calc_total
   end
 
   def can_buy?

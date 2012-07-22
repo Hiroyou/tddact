@@ -95,9 +95,17 @@ describe VendingMachine do
       subject.add(:yen50)
     end
 
-    it "つり銭を出力する" do
-      subject.refund.should == [:yen50, :yen100, :yen100]
+    context '何も購入しない' do
+      it "つり銭を出力する" do
+        subject.refund.should == 250
+      end
     end
+
+    #context 'コーラを購入したあと' do
+      #it '釣り銭を出力する' do
+        #subject.refund.should == [:yen10, :yen10, :yen10, :yen100]
+      #end
+    #end
   end
 
   describe "#initialize" do
@@ -151,5 +159,5 @@ describe VendingMachine do
         subject.sales.should == 0
       end
     end
- end
+  end
 end
